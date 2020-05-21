@@ -52,17 +52,26 @@ namespace SalesforceCore.Api
             get => this.assetApi ?? (this.assetApi = new AssetApi(this.authBaseUrl, this.clientId, this.clientSecret, this.accountId, this.scope));
             internal set => this.assetApi = value;
         }
+
         private CampaignApi campaignApi;
         public CampaignApi CampaignApi
         {
             get => this.campaignApi ?? (this.campaignApi = new CampaignApi(this.authBaseUrl, this.clientId, this.clientSecret, this.accountId, this.scope));
             internal set => this.campaignApi = value;
         }
+
         private TransactionalMessagingApi transactionalMessagingApi;
         public TransactionalMessagingApi TransactionalMessagingApi
         {
             get => this.transactionalMessagingApi ?? (this.transactionalMessagingApi = new TransactionalMessagingApi(this.authBaseUrl, this.clientId, this.clientSecret, this.accountId, this.scope));
             internal set => this.transactionalMessagingApi = value;
+        }
+
+        private PushApi pushApi;
+        public PushApi PushApi
+        {
+            get => this.pushApi ?? (this.pushApi = new PushApi(this.authBaseUrl, this.clientId, this.clientSecret, this.accountId, this.scope));
+            internal set => this.pushApi = value;
         }
     }
 }
