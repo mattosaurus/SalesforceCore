@@ -27,7 +27,7 @@ namespace SalesforceCore.Model.Push
         /// <param name="contentType">Indicates the content included within the message.</param>
         /// <param name="name">Name of the message. Must be 100 or fewer characters. For Content Builder messages, use this format: content name-unique identifier. For example: 'my test content message-0debaa7a11e11b0a00b12345ef384b1z'.</param>
         /// <param name="application">App used to send message.</param>
-        public MessageBatch(List<string> deviceTokens = default(List<string>), List<string> subscriberKeys = default(List<string>), Message message = default(Message))
+        public MessageBatch(List<string> deviceTokens = default(List<string>), List<string> subscriberKeys = default(List<string>), MessageBatchMessage message = default(MessageBatchMessage))
         {
             // to ensure "deviceTokens" or "subscriberKeys" is required (not null)
             if (deviceTokens == null && subscriberKeys == null)
@@ -67,7 +67,7 @@ namespace SalesforceCore.Model.Push
         public DateTime SendTime { get; set; }
 
         [DataMember(Name = "message", EmitDefaultValue = false)]
-        public Message Message { get; set; }
+        public MessageBatchMessage Message { get; set; }
 
         [DataMember(Name = "title", EmitDefaultValue = false)]
         public string Title { get; set; }
