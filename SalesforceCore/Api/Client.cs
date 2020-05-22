@@ -1,8 +1,21 @@
+using Microsoft.Extensions.Options;
+using SalesforceCore.Client;
 using SalesforceCore.Infrastructure;
 
 namespace SalesforceCore.Api
 {
-    public class Client
+    public interface IClient
+    {
+        AssetApi AssetApi { get; }
+
+        CampaignApi CampaignApi { get; }
+
+        TransactionalMessagingApi TransactionalMessagingApi { get; }
+
+        PushApi PushApi { get; }
+    }
+
+    public class Client : IClient
     {
         private readonly string authBaseUrl;
         private readonly string clientId;
@@ -44,6 +57,23 @@ namespace SalesforceCore.Api
             this.clientSecret = clientSecret;
             this.accountId = accountId;
             this.scope = scope;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Client"/> class.
+        /// </summary>
+        /// <param name="authBaseUrl">Your tenant-specific Authentication Base URI.</param>
+        /// <param name="clientId">Client ID issued when you create the API integration in Installed Packages.</param>
+        /// <param name="clientSecret">Client secret issued when you create the API integration in Installed Packages.</param>
+        /// <param name="accountId">Account identifier, or MID, of the target business unit. Use to switch between business units.</param>
+        /// <param name="scope">Space-separated list of data-access permissions for your application.</param>
+        public Client(IOptions<Configuration> options)
+        {
+            this.authBaseUrl = options.Value.AuthenticationInstanceUrl;
+            this.clientId = options.Value.ClientId;
+            this.clientSecret = options.Value.ClientSecret;
+            this.accountId = options.Value.AccountId;
+            this.scope = options.Value.Scope;
         }
 
         private AssetApi assetApi;
