@@ -46,7 +46,7 @@ namespace SalesforceCore.Api
         /// <param name="messageId">The ID of the message to send</param>
         /// <param name="body">JSON Parameters</param>
         /// <returns>Campaign</returns>
-        MessageBatch SendMessageBatch(string messageId, MessageBatch body);
+        List<MessageBatch> SendMessageBatch(string messageId, List<MessageBatch> body);
 
         /// <summary>
         /// sendMessageBatch
@@ -58,7 +58,7 @@ namespace SalesforceCore.Api
         /// <param name="messageId">The ID of the message to send</param>
         /// <param name="body">JSON Parameters</param>
         /// <returns>Message</returns>
-        ApiResponse<MessageBatch> SendMessageBatchWithHttpInfo(string messageId, MessageBatch body);
+        ApiResponse<List<MessageBatch>> SendMessageBatchWithHttpInfo(string messageId, List<MessageBatch> body);
         #endregion Synchronous Operations
 
         #region Asynchronous Operations
@@ -254,9 +254,9 @@ namespace SalesforceCore.Api
         /// <param name="messageId">The ID of the message to send</param>
         /// <param name="body">JSON Parameters</param>
         /// <returns>Campaign</returns>
-        public MessageBatch SendMessageBatch(string messageId, MessageBatch body)
+        public List<MessageBatch> SendMessageBatch(string messageId, List<MessageBatch> body)
         {
-            ApiResponse<MessageBatch> localVarResponse = SendMessageBatchWithHttpInfo(messageId, body);
+            ApiResponse<List<MessageBatch>> localVarResponse = SendMessageBatchWithHttpInfo(messageId, body);
             return localVarResponse.Data;
         }
 
@@ -270,7 +270,7 @@ namespace SalesforceCore.Api
         /// <param name="messageId">The ID of the message to send</param>
         /// <param name="body">JSON Parameters</param>
         /// <returns>Message</returns>
-        public ApiResponse<MessageBatch> SendMessageBatchWithHttpInfo(string messageId, MessageBatch body)
+        public ApiResponse<List<MessageBatch>> SendMessageBatchWithHttpInfo(string messageId, List<MessageBatch> body)
         {
             // verify the required parameter 'messageId' is set
             if (messageId == null)
@@ -324,7 +324,7 @@ namespace SalesforceCore.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<MessageBatch>(localVarStatusCode,
+            return new ApiResponse<List<MessageBatch>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 null);
         }
