@@ -125,7 +125,7 @@ namespace SalesforceCore.Api
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling PushApi->CreateMessage");
 
-            var localVarPath = "/push/v1/messages";
+            var localVarPath = "/push/v1/message";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -197,7 +197,7 @@ namespace SalesforceCore.Api
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling PushApi->CreateMessage");
 
-            var localVarPath = "/push/v1/messages";
+            var localVarPath = "/push/v1/message";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
